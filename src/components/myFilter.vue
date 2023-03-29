@@ -15,7 +15,7 @@ export default {
 <style scoped lang="scss">
 select {
     width: 140px;
-    height: 30px;
+    height: 35px;
     margin: 1rem 0;
     border: 1px solid lightgrey;
     padding-left: 5px;
