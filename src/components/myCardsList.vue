@@ -20,7 +20,9 @@ export default {
 
 <template>
     <div class="cards-list">
-        <myCard v-for="card in store.cardsList"></myCard>
+        <myCard v-for="(card, index) in store.cardsList.data" :key="index" :image="card.card_images[0].image_url"
+            :name="card.name" :archetype="card.archetype">
+        </myCard>
     </div>
 </template>
 
@@ -29,5 +31,9 @@ export default {
 .cards-list {
     width: 100%;
     background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3rem;
 }
 </style>

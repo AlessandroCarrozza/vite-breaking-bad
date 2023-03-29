@@ -16,8 +16,11 @@ export default {
 header {
     margin: 0;
     height: 80px;
-    background-color: red;
     display: flex;
     align-items: center;
+
+    h1 {
+        margin: auto;
+    }
 }
 </style>
