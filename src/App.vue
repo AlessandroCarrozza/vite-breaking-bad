@@ -28,18 +28,18 @@ export default {
 
 
         },
-        filteredCards() {
+        generateFilteredCards() {
 
             let urlCards = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=70&offset=0";
 
             if (store.userChoice != "All Cards") {
-                urlCards += `?archetype=${store.userChoice}`
+                urlCards += `?archetype=${store.userChoice}`;
             }
-
 
             axios.get(urlCards)
                 .then(response => {
                     this.store.cardsList = response.data;
+                    console.log(response)
                 })
         }
     },
@@ -56,7 +56,7 @@ export default {
 
     <main>
         <div class="container">
-            <myFilter @filteredCards="getCards"></myFilter>
+            <myFilter @filteredCards="generateFilteredCards"></myFilter>
             <myCardsList></myCardsList>
         </div>
     </main>
