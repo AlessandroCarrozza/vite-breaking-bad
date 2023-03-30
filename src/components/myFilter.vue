@@ -1,13 +1,23 @@
 <script>
+
+import { store } from "../store.js"
+
 export default {
     name: "myFilter",
+    data() {
+        return {
+            store,
+        }
+    },
 }
 </script>
 
 
 <template>
     <select name="filter" id="filter">
-        <option value="alien">Alien</option>
+        <option value="All Cards">All Cards</option>
+        <option v-for="archetype in store.archetypeList" :value="archetype">{{ archetype }}
+        </option>
     </select>
 </template>
 

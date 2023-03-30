@@ -18,12 +18,18 @@ export default {
             store,
         }
     },
+    methods: {
+        getCards() {
+            axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=70&offset=0")
+                .then(response => {
+                    this.store.cardsList = response.data
+                    console.log(this.store.cardsList.data);
+                    console.log(this.store.userChoice)
+                })
+        },
+    },
     created() {
-        axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=30&offset=0")
-            .then(response => {
-                this.store.cardsList = response.data
-                console.log(this.store.cardsList.data);
-            })
+        this.getCards();
     }
 }
 
@@ -35,7 +41,7 @@ export default {
 
     <main>
         <div class="container">
-            <myFilter></myFilter>
+            <myFilter @clickFilter="generateFilteredCards()"></myFilter>
             <myCardsList></myCardsList>
         </div>
     </main>
