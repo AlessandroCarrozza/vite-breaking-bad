@@ -2,9 +2,7 @@
 import myHeader from "./components/myHeader.vue";
 import myFilter from "./components/myFilter.vue";
 import myCardsList from "./components/myCardsList.vue";
-
 import axios from "axios";
-
 import { store } from "./store.js"
 
 export default {
@@ -20,12 +18,15 @@ export default {
     },
     methods: {
         getCards() {
-            axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=70&offset=0")
+            console.log(this.store.userChoice);
+            let urlCards = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=70&offset=0";
+
+            axios.get(urlCards)
                 .then(response => {
-                    this.store.cardsList = response.data
-                    console.log(this.store.cardsList.data);
-                    console.log(this.store.userChoice)
+                    this.store.cardsList = response.data;
                 })
+
+
         },
     },
     created() {
@@ -41,7 +42,7 @@ export default {
 
     <main>
         <div class="container">
-            <myFilter @clickFilter="generateFilteredCards()"></myFilter>
+            <myFilter @filteredcards="getCards"></myFilter>
             <myCardsList></myCardsList>
         </div>
     </main>
