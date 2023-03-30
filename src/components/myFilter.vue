@@ -14,7 +14,7 @@ export default {
 
 
 <template>
-    <select name="filter" id="filter" v-model="store.userChoice" @change="$emit('filteredcards')">
+    <select name="filter" id="filter" v-model="store.userChoice" @change="$emit('filteredCards')">
         <option value="All Cards">All Cards</option>
         <option v-for="archetype in store.archetypeList" :value="archetype">{{ archetype }}
         </option>
